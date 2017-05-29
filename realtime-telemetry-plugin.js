@@ -7,7 +7,7 @@ function RealtimeTelemetryPlugin() {
 	var dynamic_url = 'ws://' + window.location.host + ':8082';
         var socket = new WebSocket(dynamic_url);
         var listeners = {};
-    
+
         socket.onmessage = function (event) {
             point = JSON.parse(event.data);
             if (listeners[point.id]) {
@@ -16,32 +16,32 @@ function RealtimeTelemetryPlugin() {
                 });
             }
         };
-        
+
         var provider = {
             supportsSubscribe: function (domainObject) {
                 return domainObject.type === 'example.telemetry';
             },
             subscribe: function (domainObject, callback, options) {
-                if (!listeners[domainObject.telemetry.key]) {
-                    listeners[domainObject.telemetry.key] = [];
+                if (!listeners[domainObject.identifier.key]) {
+                    listeners[domainObject.identifier.key] = [];
                 }
-                if (!listeners[domainObject.telemetry.key].length) {
-                    socket.send('subscribe ' + domainObject.telemetry.key);
+                if (!listeners[domainObject.identifier.key].length) {
+                    socket.send('subscribe ' + domainObject.identifier.key);
                 }
-                listeners[domainObject.telemetry.key].push(callback);
+                listeners[domainObject.identifier.key].push(callback);
                 return function () {
-                    listeners[domainObject.telemetry.key] = 
-                        listeners[domainObject.telemetry.key].filter(function (c) {
+                    listeners[domainObject.identifier.key] =
+                        listeners[domainObject.identifier.key].filter(function (c) {
                             return c !== callback;
                         });
-    
-                    if (!listeners[domainObject.telemetry.key].length) {
-                        socket.send('unsubscribe ' + domainObject.telemetry.key);
+
+                    if (!listeners[domainObject.identifier.key].length) {
+                        socket.send('unsubscribe ' + domainObject.identifier.key);
                     }
                 };
             }
         };
-        
+
         openmct.telemetry.addProvider(provider);
     }
 }
