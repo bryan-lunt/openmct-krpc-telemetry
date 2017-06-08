@@ -7,9 +7,21 @@
     <script src="dictionary-plugin.js"></script>
     <script src="historical-telemetry-plugin.js"></script>
     <script src="realtime-telemetry-plugin.js"></script>
+    <script src="foo_indicator/plugin.js"></script>
 </head>
 <body>
-    <script>
+    <script>/*
+    require.config({
+            paths:{
+                "foo_indicator": "foo_indicator"
+           },
+           shim: {
+               "foo_indicator/plugin": {
+                   exports: "FooIndicatorPlugin"
+               }
+           }
+        });
+        */
         openmct.setAssetPath('node_modules/openmct/dist');
         openmct.install(openmct.plugins.LocalStorage());
         openmct.install(openmct.plugins.MyItems());
@@ -20,6 +32,9 @@
         openmct.install(DictionaryPlugin());
         openmct.install(HistoricalTelemetryPlugin());
         openmct.install(RealtimeTelemetryPlugin());
+
+        
+        openmct.install(FooIndicatorPlugin());
 
         openmct.start();
     </script>
