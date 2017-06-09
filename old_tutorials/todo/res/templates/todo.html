@@ -1,0 +1,12 @@
+<div>
+    <a href="">All</a>
+    <a href="">Incomplete</a>
+    <a href="">Complete</a>
+</div>
+
+<ul>
+    <li ng-repeat="task in model.tasks">
+        <input type="checkbox" ng-checked="task.completed">
+        {{task.description}}
+    </li>
+</ul>

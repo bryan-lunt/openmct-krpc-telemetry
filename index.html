@@ -8,6 +8,7 @@
     <script src="historical-telemetry-plugin.js"></script>
     <script src="realtime-telemetry-plugin.js"></script>
     <script src="foo_indicator/plugin.js"></script>
+    <script src="old_tutorials/todo/plugin.js"></script>
 </head>
 <body>
     <script>/*
@@ -33,8 +34,9 @@
         openmct.install(HistoricalTelemetryPlugin());
         openmct.install(RealtimeTelemetryPlugin());
 
-        
+
         openmct.install(FooIndicatorPlugin());
+        openmct.install(TodoPlugin());
 
         openmct.start();
     </script>

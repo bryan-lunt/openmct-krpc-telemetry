@@ -37,7 +37,7 @@ function FooIndicator() {
 }
 
 	function FooIndicatorPlugin() {
-		return function(openmct) {
+		return function install(openmct) {
 			var my_foo_indicator = new FooIndicator();
 			//openmct.indicators.addProvider(my_foo_indicator);
       openmct.legacyExtension("indicators",
