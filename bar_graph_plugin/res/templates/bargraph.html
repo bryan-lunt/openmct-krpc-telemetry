@@ -1,39 +1,35 @@
-<div class="example-bargraph">
-    <div class="example-tick-labels">
-        <div class="example-tick-label" style="bottom: 0%">High</div>
-        <div class="example-tick-label" style="bottom: 50%">Middle</div>
-        <div class="example-tick-label" style="bottom: 100%">Low</div>
+<div class="example-bargraph" ng-controller="BarGraphController">
+  <div class="example-tick-labels">
+    <div ng-repeat="value in [low, middle, high] track by $index"
+            class="example-tick-label"
+            style="bottom: {{ toPercent(value) }}%">
+           {{value}}
+      </div>
     </div>
 
     <div class="example-graph-area">
-        <div style="left: 0; width: 33.3%;" class="example-bar-holder">
-            <div class="example-bar" style="top: 25%; bottom: 50%;">
+      <div ng-repeat="telemetryObject in telemetryObjects"
+          style="left: {{barWidth * $index}}%; width: {{barWidth}}%"
+          class="example-bar-holder">
+            <div class="example-bar"
+                    ng-style="{
+                     bottom: getBottom(telemetryObject) + '%',
+                     top: getTop(telemetryObject) + '%'
+                 }">
             </div>
-        </div>
-        <div style="left: 33.3%; width: 33.3%;" class="example-bar-holder">
-            <div class="example-bar" style="top: 40%; bottom: 10%;">
-            </div>
-        </div>
-        <div style="left: 66.6%; width: 33.3%;" class="example-bar-holder">
-            <div class="example-bar" style="top: 30%; bottom: 40%;">
-            </div>
-        </div>
-        <div style="bottom: 50%" class="example-graph-tick">
-        </div>
+       </div>
+       <div style="bottom: {{ toPercent(middle) }}%"
+             class="example-graph-tick">
+         </div>
     </div>
 
     <div class="example-bar-labels">
-        <div style="left: 0; width: 33.3%;"
-             class="example-bar-holder example-label">
-            Label A
-        </div>
-        <div style="left: 33.3%; width: 33.3%;"
-             class="example-bar-holder example-label">
-            Label B
-        </div>
-        <div style="left: 66.6%; width: 33.3%;"
-             class="example-bar-holder example-label">
-            Label C
+      <div ng-repeat="telemetryObject in telemetryObjects"
+           style="left: {{barWidth * $index}}%; width: {{barWidth}}%"
+           class="example-bar-holder example-label">
+          <mct-representation key="'label'"
+                              mct-object="telemetryObject">
+          </mct-representation>
         </div>
     </div>
 </div>
