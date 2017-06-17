@@ -1,4 +1,4 @@
-function FooIndicator() {
+function HelloIndicator() {
     var start = Date.now();
     var now = Date.now();
     var message = "Hello FOO!";
@@ -28,7 +28,8 @@ function FooIndicator() {
             return "icon-connectivity";
         },
         getText: function () {
-            return "Hello";
+            return "Hello";// + string(now.getFullYear()) + "-" + now.getMonth() + "-" + now.getDate() +
+                    "  " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
         },
         getDescription: function () {
             return "This is my first view plugin, adapted from DigestIndicator";
@@ -36,14 +37,14 @@ function FooIndicator() {
     };
 }
 
-	function FooIndicatorPlugin() {
+	function HelloIndicatorPlugin() {
 		return function install(openmct) {
-			var my_foo_indicator = new FooIndicator();
+			//var my_foo_indicator = new HelloIndicator();
 			//openmct.indicators.addProvider(my_foo_indicator);
       openmct.legacyExtension("indicators",
                   {
-                      key: "foo_indicator",
-                      implementation: FooIndicator
+                      key: "hello_world_indicator",
+                      implementation: HelloIndicator
                   }
       );
 

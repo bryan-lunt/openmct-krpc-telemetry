@@ -1,0 +1,70 @@
+.example-bargraph {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    mid-width: 160px;
+    min-height: 160px;
+}
+
+.example-bargraph .example-tick-labels {
+    position: absolute;
+    left: 0;
+    top: 24px;
+    bottom: 32px;
+    width: 72px;
+    font-size: 75%;
+}
+
+.example-bargraph .example-tick-label {
+    position: absolute;
+    right: 0;
+    height: 1em;
+    margin-bottom: -0.5em;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.example-bargraph .example-graph-area {
+    position: absolute;
+    border: 1px gray solid;
+    left: 72px;
+    top: 24px;
+    bottom: 32px;
+    right: 0;
+}
+
+.example-bargraph .example-bar-labels {
+    position: absolute;
+    left: 72px;
+    bottom: 0;
+    right: 0;
+    height: 32px;
+}
+
+.example-bargraph .example-bar-holder {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.example-bargraph .example-graph-tick {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px gray dashed;
+}
+
+.example-bargraph .example-bar {
+    position: absolute;
+    background: darkcyan;
+    right: 4px;
+    left: 4px;
+}
+
+.example-bargraph .example-label {
+    text-align: center;
+    font-size: 85%;
+    padding-top: 6px;
+}
